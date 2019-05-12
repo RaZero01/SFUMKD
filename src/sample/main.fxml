@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <MenuBar layoutX="54.0" layoutY="30.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="ФИО">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Выйти" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="УП">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Бла бла бла" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="РП">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Ты пидор" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
