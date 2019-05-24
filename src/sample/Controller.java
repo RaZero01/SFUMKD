@@ -1,5 +1,6 @@
 package sample;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -27,24 +29,24 @@ public class Controller {
     private Stage startWork;
 
     @FXML
-        private Button closeButton;
+        private Button closeButton, fileChooser_UP, fileChooser_RP, goBtn;
     @FXML
-        private ChoiceBox choiceBox;
+        private ChoiceBox choiceBox_UP, choiceBox_RP;
     @FXML
-        private Button fileChooser;
+        private TextField versionChooser_UP, versionChooser_RP;
     @FXML
-        private TextField versionChooser;
+        private Label fileName_UP, fileName_RP;
     @FXML
-        private Label fileName;
+        private Pane pane_UP, pane_RP, pane_Login;
     @FXML
-        private Button goBtn;
+        private JFXButton btn_UP, btn_RP, btn_Login;
 
     @FXML
     public void authorize(){
         if(authorize == null){
             Parent parent = null;
             try {
-                parent = FXMLLoader.load(getClass().getResource("loader.fxml"));
+                parent = FXMLLoader.load(getClass().getResource("main.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -63,7 +65,7 @@ public class Controller {
         if(start == null){
             Parent parent = null;
             try {
-                parent = FXMLLoader.load(getClass().getResource("login.fxml"));
+                parent = FXMLLoader.load(getClass().getResource("main.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -101,14 +103,24 @@ public class Controller {
 
     @FXML
     public void choice(){
-        if (choiceBox.getValue().toString().toLowerCase().equals("с компьютера")){
-            fileChooser.setVisible(true);
-            fileName.setVisible(true);
-            versionChooser.setVisible(false);
+        if (choiceBox_UP.getValue().toString().toLowerCase().equals("с компьютера")){
+            fileChooser_UP.setVisible(true);
+            fileName_UP.setVisible(true);
+            versionChooser_UP.setVisible(false);
         } else {
-            fileChooser.setVisible(false);
-            fileName.setVisible(false);
-            versionChooser.setVisible(true);
+            fileChooser_UP.setVisible(false);
+            fileName_UP.setVisible(false);
+            versionChooser_UP.setVisible(true);
+        }
+
+        if (choiceBox_RP.getValue().toString().toLowerCase().equals("с компьютера")){
+            fileChooser_RP.setVisible(true);
+            fileName_RP.setVisible(true);
+            versionChooser_RP.setVisible(false);
+        } else {
+            fileChooser_RP.setVisible(false);
+            fileName_RP.setVisible(false);
+            versionChooser_RP.setVisible(true);
         }
 
     }
@@ -116,10 +128,10 @@ public class Controller {
     @FXML
     public void chooser(){
 
-        Stage stage = (Stage) fileChooser.getScene().getWindow();
+        Stage stage = (Stage) fileChooser_UP.getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showOpenDialog(stage);
-        fileName.setText(String.valueOf(selectedFile));
+        fileName_UP.setText(String.valueOf(selectedFile));
 
     }
 
@@ -128,7 +140,7 @@ public class Controller {
         if(startWork == null){
             Parent parent = null;
             try {
-                parent = FXMLLoader.load(getClass().getResource("main.fxml"));
+                parent = FXMLLoader.load(getClass().getResource("main2.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -139,6 +151,19 @@ public class Controller {
         startWork.show();
     }
 
+    @FXML
+    public void buttonSelector(ActionEvent event){
+        if (event.getSource() == btn_UP){
+            pane_UP.toFront();
+        } else
+            if (event.getSource() == btn_RP){
+            pane_RP.toFront();
+        } else
+            if (event.getSource() == btn_Login){
+                pane_Login.toFront();
+            }
+
+    }
 
 
 
