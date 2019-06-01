@@ -29,11 +29,11 @@ public class Controller {
     private Stage startWork;
 
     @FXML
-        private Button closeButton, fileChooser_UP, fileChooser_RP, goBtn;
+        private Button closeButton, fileChooser_UP, fileChooser_RP, goBtn, loginBtn;
     @FXML
         private ChoiceBox choiceBox_UP, choiceBox_RP;
     @FXML
-        private TextField versionChooser_UP, versionChooser_RP;
+        private TextField versionChooser_UP, versionChooser_RP, login, password;
     @FXML
         private Label fileName_UP, fileName_RP;
     @FXML
@@ -42,7 +42,7 @@ public class Controller {
         private JFXButton btn_UP, btn_RP, btn_Login;
 
     @FXML
-    public void authorize(){
+    public void authorize(ActionEvent event){
         if(authorize == null){
             Parent parent = null;
             try {
@@ -55,9 +55,22 @@ public class Controller {
             authorize.setScene(new Scene(parent));
 
         }
+        if (event.getSource() == loginBtn){
+            System.out.println(login.getText());
+
+        }
+
 
         authorize.show();
 
+    }
+
+    @FXML
+    public void login(ActionEvent event){
+        if (event.getSource() == loginBtn){
+            System.out.println(login.getText());
+            System.out.println(password.getText());
+        }
     }
 
     @FXML
@@ -65,7 +78,7 @@ public class Controller {
         if(start == null){
             Parent parent = null;
             try {
-                parent = FXMLLoader.load(getClass().getResource("main.fxml"));
+                parent = FXMLLoader.load(getClass().getClassLoader().getResource("main.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -140,7 +153,7 @@ public class Controller {
         if(startWork == null){
             Parent parent = null;
             try {
-                parent = FXMLLoader.load(getClass().getResource("main2.fxml"));
+                parent = FXMLLoader.load(getClass().getResource("main.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }

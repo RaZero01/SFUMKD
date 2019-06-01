@@ -13,6 +13,6 @@
          </font>
       </Label>
       <Button fx:id="closeButton" layoutX="35.0" layoutY="199.0" mnemonicParsing="false" onAction="#close" text="Закрыть" />
-      <Button layoutX="166.0" layoutY="199.0" mnemonicParsing="false" onAction="#startScene" text="Продолжить" />
+      <Button fx:id="goNext" layoutX="166.0" layoutY="199.0" mnemonicParsing="false" onAction="#startScene" text="Продолжить" />
    </children>
 </AnchorPane>

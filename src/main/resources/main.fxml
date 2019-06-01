@@ -20,15 +20,6 @@
             <DropShadow />
          </effect>
          <children>
-            <Pane fx:id="pane_Login" prefHeight="400.0" prefWidth="526.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <Label layoutX="164.0" layoutY="89.0" text="Пожалуйста, авторизируйтесь" />
-                  <Button layoutX="289.0" layoutY="255.0" mnemonicParsing="false" onAction="#authorize" text="Войти" />
-                  <Button fx:id="closeButton" layoutX="179.0" layoutY="255.0" mnemonicParsing="false" onAction="#close" text="Закрыть" />
-                  <PasswordField layoutX="179.0" layoutY="187.0" promptText="Введите пароль" />
-                  <TextField layoutX="179.0" layoutY="134.0" promptText="Имя пользователя" />
-               </children>
-            </Pane>
             <Pane fx:id="pane_RP" prefHeight="400.0" prefWidth="526.0" style="-fx-background-color: #008cff;">
                <children>
                   <ChoiceBox fx:id="choiceBox_RP" layoutX="188.0" layoutY="99.0" onAction="#choice" prefWidth="150.0">
@@ -53,7 +44,7 @@
             </Pane>
             <Pane fx:id="pane_UP" prefHeight="400.0" prefWidth="526.0" style="-fx-background-color: #00b500;">
                <children>
-                  <ChoiceBox fx:id="choiceBox_UP" layoutX="188.0" layoutY="94.0" onAction="#choice" prefWidth="150.0">
+                  <ChoiceBox fx:id="choiceBox_UP" layoutX="195.0" layoutY="64.0" onAction="#choice" prefWidth="150.0">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
                            <String fx:value="С компьютера" />
@@ -61,17 +52,36 @@
                         </FXCollections>
                      </items>
                   </ChoiceBox>
-                  <Label layoutX="163.0" layoutY="57.0" text="Как вы хотите загрузить файл?" />
-                  <Button fx:id="fileChooser_UP" layoutX="203.0" layoutY="232.0" mnemonicParsing="false" onAction="#chooser" text="Выбрать файл..." visible="false" />
-                  <TextField fx:id="versionChooser_UP" layoutX="180.0" layoutY="154.0" promptText="Введите версию" visible="false" />
-                  <Button fx:id="goBtn" layoutX="212.0" layoutY="285.0" mnemonicParsing="false" onAction="#toParseAction" text="Подтвердить" />
+                  <Label layoutX="170.0" layoutY="27.0" text="Как вы хотите загрузить файл?" />
+                  <Button fx:id="fileChooser_UP" layoutX="209.0" layoutY="133.0" mnemonicParsing="false" onAction="#chooser" text="Выбрать файл..." visible="false" />
+                  <TextField fx:id="versionChooser_UP" layoutX="186.0" layoutY="117.0" promptText="Введите версию" visible="false" />
+                  <Button fx:id="goBtn" layoutX="212.0" layoutY="328.0" mnemonicParsing="false" onAction="#toParseAction" text="Подтвердить" />
                   <Button fx:id="closeButton_UP" mnemonicParsing="false" prefHeight="27.0" prefWidth="63.0" text="CloseButton" visible="false" />
-                  <Label fx:id="fileName_UP" visible="false">
+                  <Label fx:id="fileName_UP" layoutX="56.0" layoutY="111.0" prefHeight="13.0" prefWidth="426.0" visible="false">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </Label>
+                  <ChoiceBox fx:id="choiceBox_UP1" layoutX="231.0" layoutY="219.0" onAction="#choice" prefHeight="27.0" prefWidth="63.0">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           
+                        </FXCollections>
+                     </items>
+                  </ChoiceBox>
+                  <Label layoutX="214.0" layoutY="182.0" text="Выберите курс" />
+                  <Label layoutX="163.0" layoutY="256.0" text="Введите название дисциплины" />
+                  <TextField fx:id="versionChooser_UP1" layoutX="189.0" layoutY="281.0" promptText="Введите дисциплину" visible="true" />
                </children></Pane>
+            <Pane fx:id="pane_Login" prefHeight="400.0" prefWidth="526.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="164.0" layoutY="89.0" text="Пожалуйста, авторизируйтесь" />
+                  <Button fx:id="loginBtn" layoutX="289.0" layoutY="255.0" mnemonicParsing="false" onAction="#login" text="Войти" />
+                  <Button fx:id="closeButton" layoutX="179.0" layoutY="255.0" mnemonicParsing="false" onAction="#close" text="Закрыть" />
+                  <PasswordField fx:id="password" layoutX="179.0" layoutY="187.0" promptText="Введите пароль" />
+                  <TextField fx:id="login" layoutX="179.0" layoutY="134.0" promptText="Имя пользователя" />
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="400.0" prefWidth="73.0">
@@ -79,6 +89,11 @@
             <JFXButton fx:id="btn_UP" layoutY="83.0" onAction="#buttonSelector" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #00b500;" text="УП" textAlignment="JUSTIFY" />
             <JFXButton fx:id="btn_RP" layoutY="110.0" onAction="#buttonSelector" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #008cff;" text="РП" />
             <JFXButton fx:id="btn_Login" layoutX="7.0" layoutY="24.0" onAction="#buttonSelector" style="-fx-background-color: #ffffff;" text="Войти" />
+            <JFXButton fx:id="btn_UP1" layoutX="-1.0" layoutY="137.0" onAction="#buttonSelector" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #00b500;" text="Документы" textAlignment="JUSTIFY">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </JFXButton>
          </children>
       </AnchorPane>
    </children>
