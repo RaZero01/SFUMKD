@@ -140,7 +140,7 @@ public class Controller {
         if(startWork == null){
             Parent parent = null;
             try {
-                parent = FXMLLoader.load(getClass().getResource("main2.fxml"));
+                parent = FXMLLoader.load(getClass().getResource("main.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }

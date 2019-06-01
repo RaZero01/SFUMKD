@@ -20,27 +20,15 @@
             <DropShadow />
          </effect>
          <children>
-            <Pane fx:id="pane_UP" prefHeight="400.0" prefWidth="526.0" style="-fx-background-color: #00b500;">
+            <Pane fx:id="pane_Login" prefHeight="400.0" prefWidth="526.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <ChoiceBox fx:id="choiceBox_UP" layoutX="188.0" layoutY="94.0" onAction="#choice" prefWidth="150.0">
-                     <items>
-                        <FXCollections fx:factory="observableArrayList">
-                           <String fx:value="С компьютера" />
-                           <String fx:value="С сервера" />
-                        </FXCollections>
-                     </items>
-                  </ChoiceBox>
-                  <Label layoutX="163.0" layoutY="57.0" text="Как вы хотите загрузить файл?" />
-                  <Button fx:id="fileChooser_UP" layoutX="203.0" layoutY="232.0" mnemonicParsing="false" onAction="#chooser" text="Выбрать файл..." visible="false" />
-                  <TextField fx:id="versionChooser_UP" layoutX="180.0" layoutY="154.0" promptText="Введите версию" visible="false" />
-                  <Button layoutX="212.0" layoutY="285.0" mnemonicParsing="false" onAction="#toParseAction" text="Подтвердить" />
-                  <Button fx:id="closeButton_UP" mnemonicParsing="false" prefHeight="27.0" prefWidth="63.0" text="CloseButton" visible="false" />
-                  <Label fx:id="fileName_UP" visible="false">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-               </children></Pane>
+                  <Label layoutX="164.0" layoutY="89.0" text="Пожалуйста, авторизируйтесь" />
+                  <Button layoutX="289.0" layoutY="255.0" mnemonicParsing="false" onAction="#authorize" text="Войти" />
+                  <Button fx:id="closeButton" layoutX="179.0" layoutY="255.0" mnemonicParsing="false" onAction="#close" text="Закрыть" />
+                  <PasswordField layoutX="179.0" layoutY="187.0" promptText="Введите пароль" />
+                  <TextField layoutX="179.0" layoutY="134.0" promptText="Имя пользователя" />
+               </children>
+            </Pane>
             <Pane fx:id="pane_RP" prefHeight="400.0" prefWidth="526.0" style="-fx-background-color: #008cff;">
                <children>
                   <ChoiceBox fx:id="choiceBox_RP" layoutX="188.0" layoutY="99.0" onAction="#choice" prefWidth="150.0">
@@ -54,23 +42,36 @@
                   <Label layoutX="163.0" layoutY="53.0" text="Как вы хотите загрузить файл?" />
                   <Button fx:id="fileChooser_RP" layoutX="203.0" layoutY="222.0" mnemonicParsing="false" onAction="#chooser" text="Выбрать файл..." visible="false" />
                   <TextField fx:id="versionChooser_RP" layoutX="179.0" layoutY="154.0" promptText="Введите версию" visible="false" />
-                  <Button layoutX="211.0" layoutY="265.0" mnemonicParsing="false" onAction="#toParseAction" text="Подтвердить" />
+                  <Button fx:id="goBtn" layoutX="211.0" layoutY="265.0" mnemonicParsing="false" onAction="#toParseAction" text="Подтвердить" />
                   <Button fx:id="closeButton_RP" mnemonicParsing="false" prefHeight="27.0" prefWidth="63.0" text="CloseButton" visible="false" />
                   <Label fx:id="fileName_RP" visible="false">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </Label>
-               </children></Pane>
-            <Pane fx:id="pane_Login" prefHeight="400.0" prefWidth="526.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <Label layoutX="164.0" layoutY="89.0" text="Пожалуйста, авторизируйтесь" />
-                  <Button layoutX="289.0" layoutY="255.0" mnemonicParsing="false" onAction="#authorize" text="Войти" />
-                  <Button fx:id="closeButton" layoutX="179.0" layoutY="255.0" mnemonicParsing="false" onAction="#close" text="Закрыть" />
-                  <PasswordField layoutX="179.0" layoutY="187.0" promptText="Введите пароль" />
-                  <TextField layoutX="179.0" layoutY="134.0" promptText="Имя пользователя" />
                </children>
             </Pane>
+            <Pane fx:id="pane_UP" prefHeight="400.0" prefWidth="526.0" style="-fx-background-color: #00b500;">
+               <children>
+                  <ChoiceBox fx:id="choiceBox_UP" layoutX="188.0" layoutY="94.0" onAction="#choice" prefWidth="150.0">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="С компьютера" />
+                           <String fx:value="С сервера" />
+                        </FXCollections>
+                     </items>
+                  </ChoiceBox>
+                  <Label layoutX="163.0" layoutY="57.0" text="Как вы хотите загрузить файл?" />
+                  <Button fx:id="fileChooser_UP" layoutX="203.0" layoutY="232.0" mnemonicParsing="false" onAction="#chooser" text="Выбрать файл..." visible="false" />
+                  <TextField fx:id="versionChooser_UP" layoutX="180.0" layoutY="154.0" promptText="Введите версию" visible="false" />
+                  <Button fx:id="goBtn" layoutX="212.0" layoutY="285.0" mnemonicParsing="false" onAction="#toParseAction" text="Подтвердить" />
+                  <Button fx:id="closeButton_UP" mnemonicParsing="false" prefHeight="27.0" prefWidth="63.0" text="CloseButton" visible="false" />
+                  <Label fx:id="fileName_UP" visible="false">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="400.0" prefWidth="73.0">
