@@ -20,15 +20,6 @@
             <DropShadow />
          </effect>
          <children>
-            <Pane fx:id="pane_Login" prefHeight="400.0" prefWidth="526.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <Label layoutX="164.0" layoutY="89.0" text="Пожалуйста, авторизируйтесь" />
-                  <Button layoutX="289.0" layoutY="255.0" mnemonicParsing="false" onAction="#authorize" text="Войти" />
-                  <Button fx:id="closeButton2" layoutX="179.0" layoutY="255.0" mnemonicParsing="false" onAction="#close" text="Закрыть" />
-                  <PasswordField layoutX="179.0" layoutY="187.0" promptText="Введите пароль" />
-                  <TextField layoutX="179.0" layoutY="134.0" promptText="Имя пользователя" />
-               </children>
-            </Pane>
             <Pane fx:id="pane_UP" prefHeight="400.0" prefWidth="526.0" style="-fx-background-color: #00b500;">
                <children>
                   <ChoiceBox fx:id="choiceBox_UP" layoutX="188.0" layoutY="94.0" onAction="#choice" prefWidth="150.0">
@@ -71,6 +62,15 @@
                      </font>
                   </Label>
                </children></Pane>
+            <Pane fx:id="pane_Login" prefHeight="400.0" prefWidth="526.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="164.0" layoutY="89.0" text="Пожалуйста, авторизируйтесь" />
+                  <Button layoutX="289.0" layoutY="255.0" mnemonicParsing="false" onAction="#authorize" text="Войти" />
+                  <Button fx:id="closeButton" layoutX="179.0" layoutY="255.0" mnemonicParsing="false" onAction="#close" text="Закрыть" />
+                  <PasswordField layoutX="179.0" layoutY="187.0" promptText="Введите пароль" />
+                  <TextField layoutX="179.0" layoutY="134.0" promptText="Имя пользователя" />
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="400.0" prefWidth="73.0">
