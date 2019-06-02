@@ -109,17 +109,6 @@ public class Controller {
             fileName_UP.setVisible(false);
             versionChooser_UP.setVisible(true);
         }
-
-        if (choiceBox_RP.getValue().toString().toLowerCase().equals("с компьютера")) {
-            fileChooser_RP.setVisible(true);
-            fileName_RP.setVisible(true);
-            versionChooser_RP.setVisible(false);
-        } else {
-            fileChooser_RP.setVisible(false);
-            fileName_RP.setVisible(false);
-            versionChooser_RP.setVisible(true);
-        }
-
     }
 
     @FXML
