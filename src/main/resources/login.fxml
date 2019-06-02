@@ -17,10 +17,10 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
          <children>
             <Label layoutX="7.0" layoutY="14.0" text="Пожалуйста, авторизируйтесь" />
-            <Button layoutX="134.0" layoutY="159.0" mnemonicParsing="false" onAction="#authorize" text="Войти" />
-            <Button fx:id="closeButton" layoutX="21.0" layoutY="159.0" mnemonicParsing="false" onAction="#close" text="Закрыть" />
-            <PasswordField fx:id="passField" layoutX="22.0" layoutY="111.0" promptText="Введите пароль" />
-            <TextField fx:id="loginField" layoutX="19.0" layoutY="57.0" promptText="Имя пользователя" />
+            <Button layoutX="134.0" layoutY="159.0" mnemonicParsing="false" onAction="#login" text="Войти" />
+            <Button  fx:id="closeButton" layoutX="21.0" layoutY="159.0" mnemonicParsing="false" onAction="#close" text="Закрыть" />
+            <PasswordField fx:id="password" layoutX="179.0" layoutY="187.0" promptText="Введите пароль" />
+            <TextField fx:id="login" layoutX="179.0" layoutY="134.0" promptText="Имя пользователя" />
 
          </children>
       </AnchorPane>

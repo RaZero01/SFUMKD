@@ -1,0 +1,78 @@
+POST http://94.177.189.97:11040/eps/user/auth
+Accept: */*
+Content-Type: application/json
+
+{
+  "password": "string",
+  "login": "lirveez"
+}
+
+<> 2019-06-02T083515.200.json
+
+###
+
+POST http://94.177.189.97:11040/eps/user/auth
+Accept: */*
+Content-Type: application/json
+
+{
+  "password": "string",
+  "login": "lirveez"
+}
+
+<> 2019-06-02T083221.200.json
+
+###
+
+POST http://94.177.189.97:11040/eps/user/auth
+Accept: */*
+Content-Type: application/json
+
+{
+  "password": "string",
+  "login": "lirveez"
+}
+
+<> 2019-06-02T083155.200.json
+
+###
+
+POST http://94.177.189.97:11040/eps/user/auth
+Accept: */*
+Content-Type: application/json
+
+{
+  "password": "string",
+  "login": "lirveez"
+}
+
+<> 2019-06-02T083140.200.json
+
+###
+
+POST http://94.177.189.97:11040/eps/user/auth
+Accept: */*
+Content-Type: application/json
+
+{
+  "password": "string",
+  "login": "login"
+}
+
+<> 2019-06-02T083129.200.json
+
+###
+org.zalando.logbook.Logbook              : {"origin":"remote","type":"request","correlation":"8af629193f8ca3e0","protocol":"HTTP/1.1","remote":"46.242.14.222","method":"POST","uri":"http://94.177.189.97:11040/","headers":{"accept":["*/*"],"accept-encoding":["gzip,deflate"],"connection":["Keep-Alive"],"content-length":["47"],"content-type":["application/json; charset=UTF-8"],"host":["94.177.189.97:11040"],"user-agent":["Apache-HttpClient/4.5.5 (Java/1.8.0_181)"]},"body":{"login":"lirveez","password":"string"}}
+POST http://94.177.189.97:11040/eps/user/auth
+Accept: */*
+Content-Type: application/json
+
+{
+  "password": "string",
+  "login": "login"
+}
+
+<> 2019-06-02T071655.200.json
+
+###
+

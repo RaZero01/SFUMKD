@@ -6,7 +6,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -19,12 +22,17 @@ import java.io.IOException;
 public class Controller {
 
 
-    public PasswordField passField;
     private Stage authorize;
     private Stage start;
     private Stage check;
     private Stage startWork;
 
+    @FXML
+    public Label version;
+    @FXML
+    public ChoiceBox choiceBoxEP;
+    @FXML
+    private TextField login, password;
     @FXML
     private Button closeButton, fileChooser_UP, fileChooser_RP, goBtn;
     @FXML
@@ -42,20 +50,11 @@ public class Controller {
     public void authorize() {
         if (authorize == null) {
             Parent parent = null;
-            try {
-                HTTPClient client = new HTTPClient();
-                client.authtorize(login.getText(), password.getText());
-                parent = FXMLLoader.load(getClass().getClassLoader().getResource("main.fxml"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            close();
-            authorize = new Stage(StageStyle.DECORATED);
-            authorize.setScene(new Scene(parent));
-
+            HTTPClient client = new HTTPClient();
+            boolean success = client.authtorize(login.getText(), password.getText());
+            if (success)
+                pane_UP.toFront();
         }
-
-        authorize.show();
 
     }
 
@@ -105,11 +104,15 @@ public class Controller {
         if (choiceBox_UP.getValue().toString().toLowerCase().equals("с компьютера")) {
             fileChooser_UP.setVisible(true);
             fileName_UP.setVisible(true);
-            versionChooser_UP.setVisible(false);
+            choiceBoxEP.setVisible(false);
+            version.setVisible(false);
         } else {
+            HTTPClient client = new HTTPClient();
+            client.getAllEducationalPlans();
             fileChooser_UP.setVisible(false);
             fileName_UP.setVisible(false);
-            versionChooser_UP.setVisible(true);
+            choiceBoxEP.setVisible(true);
+            version.setVisible(true);
         }
     }
 

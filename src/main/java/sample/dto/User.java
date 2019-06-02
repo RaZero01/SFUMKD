@@ -11,7 +11,6 @@ public class User {
     public static final User user = new User();
 
     private String login;
-    private String password;
     private String name;
     private String surname;
     private String patronymic;
