@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Controller {
 
@@ -49,6 +50,7 @@ public class Controller {
     private Pane pane_UP, pane_RP, pane_Login;
     @FXML
     private JFXButton btn_UP, btn_RP, btn_Login;
+    private List<EducationalPlan> plans;
 
     @FXML
     public void authorize() {
@@ -81,7 +83,7 @@ public class Controller {
 
     @FXML
     public void toParseAction() {
-        if (check == null) {
+        if (!version.isVisible()) {
             Parent parent = null;
             try {
                 parent = FXMLLoader.load(getClass().getClassLoader().getResource("check.fxml"));
@@ -94,9 +96,14 @@ public class Controller {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            close();
+            check.show();
+        } else {
+            EducationalPlan educationalPlan = plans.stream()
+                    .filter(plan -> plan.getCustomName().equals(choiceBoxEP.getValue().toString()))
+                    .findFirst().orElseThrow(RuntimeException::new);
+//            WordImporter wordImporter = new WordImporter();
         }
-        close();
-        check.show();
 
     }
 
@@ -116,7 +123,11 @@ public class Controller {
             version.setVisible(false);
         } else {
             HTTPClient client = new HTTPClient();
-            List<EducationalPlan> allEducationalPlans = client.getAllEducationalPlans();
+            plans = client.getAllEducationalPlans();
+            List<String> customNames = plans.stream()
+                    .map(EducationalPlan::getCustomName)
+                    .collect(Collectors.toList());
+            choiceBoxEP.getItems().setAll(customNames);
             fileChooser_UP.setVisible(false);
             fileName_UP.setVisible(false);
             choiceBoxEP.setVisible(true);
