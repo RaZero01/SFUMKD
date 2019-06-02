@@ -6,20 +6,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import sample.client.HTTPClient;
 
 import java.io.File;
 import java.io.IOException;
 
 public class Controller {
 
+
+    public PasswordField passField;
     private Stage authorize;
     private Stage start;
     private Stage check;
@@ -43,6 +43,8 @@ public class Controller {
         if (authorize == null) {
             Parent parent = null;
             try {
+                HTTPClient client = new HTTPClient();
+                client.authtorize(login.getText(), password.getText());
                 parent = FXMLLoader.load(getClass().getClassLoader().getResource("main.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
@@ -109,17 +111,6 @@ public class Controller {
             fileName_UP.setVisible(false);
             versionChooser_UP.setVisible(true);
         }
-
-        if (choiceBox_RP.getValue().toString().toLowerCase().equals("с компьютера")) {
-            fileChooser_RP.setVisible(true);
-            fileName_RP.setVisible(true);
-            versionChooser_RP.setVisible(false);
-        } else {
-            fileChooser_RP.setVisible(false);
-            fileName_RP.setVisible(false);
-            versionChooser_RP.setVisible(true);
-        }
-
     }
 
     @FXML
@@ -131,7 +122,6 @@ public class Controller {
         fileName_UP.setText(String.valueOf(selectedFile));
 
     }
-
 
 
     @FXML
