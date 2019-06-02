@@ -15,9 +15,13 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import sample.client.HTTPClient;
+import sample.dto.EducationalPlan;
+import sample.parser.EducationalPlanParser;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.List;
 
 public class Controller {
 
@@ -81,11 +85,15 @@ public class Controller {
             Parent parent = null;
             try {
                 parent = FXMLLoader.load(getClass().getClassLoader().getResource("check.fxml"));
-            } catch (IOException e) {
+                check = new Stage(StageStyle.DECORATED);
+                check.setScene(new Scene(parent));
+                EducationalPlanParser parser = new EducationalPlanParser();
+                EducationalPlan educationalPlan = parser.parse(new URL("file:/" + fileName_UP.getText()));
+                HTTPClient client = new HTTPClient();
+                client.sendEducationalPlan(educationalPlan);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-            check = new Stage(StageStyle.DECORATED);
-            check.setScene(new Scene(parent));
         }
         close();
         check.show();
@@ -108,7 +116,7 @@ public class Controller {
             version.setVisible(false);
         } else {
             HTTPClient client = new HTTPClient();
-            client.getAllEducationalPlans();
+            List<EducationalPlan> allEducationalPlans = client.getAllEducationalPlans();
             fileChooser_UP.setVisible(false);
             fileName_UP.setVisible(false);
             choiceBoxEP.setVisible(true);
