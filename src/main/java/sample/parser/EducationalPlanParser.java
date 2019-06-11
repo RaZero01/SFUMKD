@@ -55,7 +55,7 @@ public class EducationalPlanParser {
     }
 
     private Set<Discipline> parseDisciplines(Sheet course) {
-        Set<Discipline> disciplines = new HashSet<Discipline>();
+        Set<Discipline> disciplines = new HashSet<>();
         String courseStr = String.valueOf(Integer.parseInt(course.getSheetName().replaceAll("[\\D]", "")));
         for (Row row : course) {
             try {

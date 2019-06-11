@@ -15,6 +15,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import sample.client.HTTPClient;
+import sample.dto.Discipline;
 import sample.dto.EducationalPlan;
 import sample.parser.EducationalPlanParser;
 
@@ -22,9 +23,10 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Controller {
+public class MainController {
 
 
     private Stage authorize;
@@ -33,9 +35,13 @@ public class Controller {
     private Stage startWork;
 
     @FXML
+    public ChoiceBox<String> discChoice;
+    @FXML
+    public ChoiceBox<String> courseChoice;
+    @FXML
     public Label version;
     @FXML
-    public ChoiceBox choiceBoxEP;
+    public ChoiceBox<String> choiceBoxEP;
     @FXML
     private TextField login, password;
     @FXML
@@ -82,7 +88,7 @@ public class Controller {
     }
 
     @FXML
-    public void toParseAction() {
+    public void toParseAction() throws InterruptedException, IOException {
         if (!version.isVisible()) {
             Parent parent = null;
             try {
@@ -99,13 +105,24 @@ public class Controller {
             close();
             check.show();
         } else {
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("discipline.fxml"));
+            Parent root = loader.load();
+
+            DisciplineController disciplineController = loader.getController();
+            Stage stage = new Stage();
+            stage.setTitle("Выберите дисциплину и курс");
+            stage.setScene(new Scene(root, 300, 250));
+            stage.show();
+
             EducationalPlan educationalPlan = plans.stream()
-                    .filter(plan -> plan.getCustomName().equals(choiceBoxEP.getValue().toString()))
-                    .findFirst().orElseThrow(RuntimeException::new);
-//            WordImporter wordImporter = new WordImporter();
+                    .filter(p -> p.getCustomName().equals(choiceBoxEP.getValue()))
+                    .findFirst().orElseThrow(NullPointerException::new);
+            disciplineController.setDisciplines(educationalPlan);
+
         }
 
     }
+
 
     @FXML
     public void close() {
@@ -158,5 +175,18 @@ public class Controller {
 
     }
 
+    public void fill(ActionEvent actionEvent) {
+        EducationalPlan educationalPlan = plans.stream()
+                .filter(plan -> plan.getCustomName().equals(choiceBoxEP.getValue().toString()))
+                .findFirst().orElseThrow(RuntimeException::new);
+        discChoice.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) ->
+        {
+            Set<String> courses = educationalPlan.getDisciplines().stream()
+                    .filter(discipline -> discipline.getName().contains(newValue.toString()))
+                    .map(Discipline::getCourse)
+                    .collect(Collectors.toSet());
+            courseChoice.getItems().setAll(courses);
+        });
 
+    }
 }
