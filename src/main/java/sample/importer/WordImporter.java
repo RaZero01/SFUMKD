@@ -44,13 +44,15 @@ public class WordImporter {
                         if (txt.contains(DIRECTION)) {
                             txt = txt.replace(DIRECTION, educationalPlan.getTrDirection());
                         } else if (txt.contains(WHITESPACE)) {
-                            txt = txt.replace(WHITESPACE, "     ");
+                            txt = txt.replace(WHITESPACE, "       ");
                             CTShd ctShd = r.getCTR().addNewRPr().addNewShd();
                             ctShd.setVal(STShd.CLEAR);
                             ctShd.setColor("auto");
                             ctShd.setFill("00FFFF");
                         } else if (txt.contains(NAME)) {
                             txt = txt.replace(NAME, discipline.getName());
+                        } else if (txt.contains(DEPARTMENT)) {
+                            txt = txt.replace(DEPARTMENT, educationalPlan.getDepartment());
                         } else if (txt.contains(PROFILE)) {
                             txt = txt.replace(PROFILE, educationalPlan.getProfile());
                         } else if (txt.contains(FORM)) {
@@ -61,11 +63,11 @@ public class WordImporter {
                             txt = txt.replace(DEGREE, User.user.getDegree());
                         } else if (txt.contains(USERNAME)) {
                             txt = txt.replace(USERNAME, User.user.getSurname() + " " + User.user.getName().charAt(0) + "."
-                                    + " " + User.user.getPatronymic().charAt(0));
+                                    + " " + User.user.getPatronymic().charAt(0) + ".");
                         } else if (txt.contains(COMPETITIONS_ENUM)) {
                             txt = txt.replace(COMPETITIONS_ENUM, getCompetitionEnum(discipline.getCompetitions()));
-                        } else if (txt.contains(COMPETITIONS_DESC)) {
-                            txt = txt.replace(COMPETITIONS_DESC, getCompetitionDesc(discipline.getCompetitions()));
+                        } else if (txt.contains(COMPETITION_ARR)) {
+                            txt = txt.replace(COMPETITION_ARR, getCompetitionDesc(discipline.getCompetitions()));
                         } else if (txt.contains(EXAM_UNITS)) {
                             txt = txt.replace(EXAM_UNITS, discipline.getExam_units());
                         } else if (txt.contains(TOTAL_HOURS)) {
@@ -80,8 +82,6 @@ public class WordImporter {
                             txt = txt.replace(SELF_HOURS, discipline.getSelf_hours());
                         } else if (txt.contains(CONTROL_FORMS)) {
                             txt = txt.replace(CONTROL_FORMS, getControlForms(discipline.getControlForms()));
-                        } else if (txt.contains(COMPETITION_ARR)) {
-                            txt = txt.replace(COMPETITION_ARR, getCompetitionArr(discipline.getCompetitions()));
                         }
                         r.setText(txt, 0);
                     });
@@ -115,17 +115,26 @@ public class WordImporter {
     private String getCompetitionDesc(Set<Competition> competitions) {
         StringBuffer str = new StringBuffer();
         competitions
-                .forEach(code -> str.append(code.getCode()).append(" - ").append(code.getDescription()));
-        return str.toString();
+                .forEach(code -> str.append(" ")
+                        .append(code.getCode())
+                        .append(" - ")
+                        .append(code.getDescription())
+                        .append(","));
+        return str.replace(0, 1, "")
+                .replace(str.length() - 1, str.length(), "")
+                .toString();
 
     }
 
     private String getCompetitionEnum(Set<Competition> competitions) {
         StringBuffer str = new StringBuffer();
-        competitions.stream()
-                .map(Competition::getCode)
-                .forEach(code -> str.append(code).append(" "));
-        return str.toString();
+        competitions
+                .forEach(code -> str.append(" ")
+                        .append(code.getCode())
+                        .append(","));
+        return str.replace(0, 1, "")
+                .replace(str.length() - 1, str.length(), "")
+                .toString();
 
     }
 
